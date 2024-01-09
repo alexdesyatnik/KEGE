@@ -3,15 +3,15 @@
 s = open("24_8654.txt").readline()
 
 begin = end = 0
-maxlen = 1
+maxlen = 0
 
-while end < len(s) - 1:
+while end < len(s):
     if end % 10000 == 0:
         print(".", end="")
     end += 1
-    if s[end] == "D" and s[end - 3] == "B":
-        begin = end - 3
-    maxlen = max(maxlen, end - begin + 1)
+    if s[end - 1] == "D" and s[end - 4] == "B":
+        begin = end - 4
+    maxlen = max(maxlen, end - begin)
 
 print()
 print(maxlen)
