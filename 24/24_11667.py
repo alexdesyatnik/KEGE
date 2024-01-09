@@ -10,14 +10,14 @@ begin = end = 0
 maxlen = 0
 inf_count = 0
 
-while end < len(s) - 1:
+while end < len(s):
     end += 1
     if end % 100000 == 0:
         print(".", end="")
-    if s[end - 7 : end + 1] == "INFINITY":
+    if s[end - 8 : end] == "INFINITY":
         inf_count += 1
     if inf_count == 1000:
-        maxlen = max(maxlen, end - begin + 1)
+        maxlen = max(maxlen, end - begin)
     elif inf_count > 1000:
         begin = s.find("INFINITY", begin) + 1
         inf_count -= 1
