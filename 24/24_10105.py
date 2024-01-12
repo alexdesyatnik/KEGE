@@ -1,17 +1,21 @@
-s = open("24_10105.txt").readline()
+s = open("24_10105.txt").readline().strip()
 
-max_len = 0
-l = 0
-r = 0
-t_count = int(s[l] == "T")
-while r < len(s):
-    if t_count == 100:
-        max_len = max(max_len, r - l + 1)
-        if s[l] == "T":
-            t_count -= 1
-        l += 1
-    else:
-        r += 1
-        if r < len(s) and s[r] == "T":
-            t_count += 1
-print(max_len)
+maxlen = 0
+begin = 0  # включительно
+end = 0  # НЕ включительно
+count_t = 0
+
+while end < len(s):
+    end += 1
+    if end % 100000 == 0:
+        print(".", end="")
+    if s[end - 1] == 'T':
+        count_t += 1
+    if count_t == 100:
+        maxlen = max(maxlen, end - begin)
+    elif count_t > 100:
+        begin = s.find('T', begin) + 1
+        count_t -= 1
+
+print()
+print(maxlen)
