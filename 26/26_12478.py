@@ -8,18 +8,16 @@ for _ in range(n):
 
 data.sort()
 start0 = start
-ans = []
-last_chosen = data[0]
+ans = [data[0]]
 for ab in data:
     if ab[0] <= start:
-        if ab[1] - start > last_chosen[1] - start:
-            last_chosen = ab
+        if ab[1] - start > ans[-1][1] - start:
+            ans[-1] = ab
     else:
-        ans.append(last_chosen)
-        start = last_chosen[1]
-        last_chosen = ab
+        start = ans[-1][1]
         if start >= stop:
             break
+        ans.append(ab)
 
 #print(ans)
 print(len(ans))
