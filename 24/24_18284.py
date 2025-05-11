@@ -1,4 +1,3 @@
-import fnmatch
 s = open("24_18284.txt").readline()
 
 lis = [i for i in range(len(s)) if s[i] == "L"]
