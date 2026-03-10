@@ -4,7 +4,7 @@ v = s.find('V')
 e = s.find('E')
 minlen = 100000000
 begin = 0
-for l in range(80000, len(s)):
+for l in range(len(s)):
     if s[l] == 'L':
         begin = l
         if begin > o:
