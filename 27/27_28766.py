@@ -1,16 +1,12 @@
 import math
 
-def parse_star(s):
-    return (s[0], int(s[1]), s[2:])
-
 f = open("27_A_28766.txt")
 stars = []
 for line in f:
-    x, y, star = line.split()
+    x, y, info = line.split()
     x = float(x)
     y = float(y)
-    star = parse_star(star)
-    stars.append([(x, y), star])
+    stars.append([(x, y), info])
 
 all_stars = stars[:]
 
@@ -38,7 +34,6 @@ def find_center(cl):
         if sumdist < mindist:
             mindist = sumdist
             center = p1
-    print("CENTER:", center)
     return center
 
 # Задача A - нужен только центр кластера с наименьшим кол-вом звезд
@@ -47,10 +42,10 @@ center = find_center(clusters[1])
 mindist = 10 ** 10
 maxdist = 0
 for p in all_stars:
-    if p[1][0] == "Y" and p[1][2] == "III": # красный гигант
+    if "Y" in p[1] and "III" in p[1]: # красный гигант
         d = math.dist(p[0], center[0])
         mindist = min(mindist, d)
         maxdist = max(maxdist, d)
-print(int(mindist * 10000), int(maxdist * 10000))
+print("A:", int(mindist * 10000), int(maxdist * 10000))
 
 
