@@ -16,16 +16,16 @@ for i in range(len(primes) - 2):
     p1 = primes[i]
     if p1 * p1 * p1 > 2_400_000 * 2:
         break
-    for j in range(len(primes) - 1):
+    for j in range(i + 1, len(primes) - 1):
         p2 = primes[j]
         if p1 * p2 * p2 > 2_400_000 * 2:
             break
-        for k in range(len(primes)):
+        for k in range(j + 1, len(primes)):
             p3 = primes[k]
             p = p1 * p2 * p3
             if p > 2_400_000 * 2:
                 break
             if p > 2_400_000:
                 nums.append((p, max(p1, p2, p3)))
-nums = sorted(set(nums))
+nums = sorted(nums)
 print(*nums[:5], sep="\n")
